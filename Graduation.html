@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html class="scroll-smooth" lang="vi">
+<head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Thiệp Mời Lễ Tốt Nghiệp - Cao Thị Nguyệt Đoan</title>
+<!-- Google Fonts: Cormorant Garamond, Montserrat, Great Vibes & Dancing Script -->
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&amp;family=Dancing+Script:wght@500;700&amp;family=Great+Vibes&amp;family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&amp;family=Playfair+Display:ital,wght@0,600;0,700;1,400&amp;display=swap" rel="stylesheet">
+<!-- Canvas Confetti Library for Festive Opening Effect -->
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+<!-- Tailwind CSS v3 -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            theme: {
+              charcoal: '#5B758E',
+              navy: '#2F4858',
+              deep: '#1B2B3A',
+              light: '#F8FAFC',
+              border: '#D6DFE8',
+              accent: '#E6AF2E',
+              paper: '#FAF8F5'
+            }
+          },
+          fontFamily: {
+            serif: ['"Cormorant Garamond"', 'serif'],
+            display: ['"Playfair Display"', 'serif'],
+            sans: ['"Montserrat"', 'sans-serif'],
+            script: ['"Great Vibes"', 'cursive'],
+            handwriting: ['"Dancing Script"', 'cursive']
+          },
+          boxShadow: {
+            'invitation': '0 25px 60px -15px rgba(27, 43, 58, 0.15)',
+            'paper': '0 8px 30px rgba(0, 0, 0, 0.08)'
+          }
+        }
+      }
+    }
+  </script>
+<!-- BEGIN: Custom Styles -->
+<style data-purpose="custom-typography">
+    .font-script-smooth {
+      font-family: 'Great Vibes', cursive;
+      letter-spacing: 0.02em;
+    }
+    .font-handwritten {
+      font-family: 'Dancing Script', cursive;
+    }
+  </style>
+<style data-purpose="decorations-and-effects">
+    /* Subtle paper texture simulation */
+    .bg-paper-pattern {
+      background-color: #fcfbfa;
+      background-image: radial-gradient(#d6dfe8 0.75px, transparent 0.75px);
+      background-size: 24px 24px;
+    }
+
+    /* Envelope pulse glow */
+    @keyframes pulseGlow {
+      0%, 100% { box-shadow: 0 10px 25px -5px rgba(91, 117, 142, 0.3), 0 0 0 0 rgba(91, 117, 142, 0.4); }
+      50% { box-shadow: 0 20px 35px -5px rgba(91, 117, 142, 0.45), 0 0 0 8px rgba(91, 117, 142, 0.15); }
+    }
+    .animate-envelope-glow {
+      animation: pulseGlow 2.5s infinite;
+    }
+
+    /* 3D Envelope Flap Animation */
+    .envelope-3d-scene {
+      perspective: 1200px;
+    }
+
+    .envelope-flap-3d {
+      transform-origin: top center;
+      transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1), z-index 0.3s;
+      backface-visibility: hidden;
+      transform-style: preserve-3d;
+      z-index: 20;
+    }
+
+    .envelope-opened .envelope-flap-3d {
+      transform: rotateX(180deg);
+      z-index: 5;
+    }
+
+    /* Cute Bow Ribbon Transition */
+    .envelope-ribbon-bow {
+      transition: transform 0.5s ease, opacity 0.4s ease;
+    }
+    .envelope-opened .envelope-ribbon-bow {
+      transform: scale(0.85);
+      opacity: 0.95;
+    }
+
+    /* Letter Slide Out & Accordion Reveal */
+    #invitation-unfold-wrapper {
+      display: grid;
+      grid-template-rows: 0fr;
+      transition: grid-template-rows 0.85s cubic-bezier(0.34, 1.25, 0.64, 1), opacity 0.6s ease;
+      opacity: 0;
+    }
+
+    #invitation-unfold-wrapper.is-open {
+      grid-template-rows: 1fr;
+      opacity: 1;
+    }
+
+    .letter-slide-container {
+      overflow: hidden;
+      transform: translateY(-20px) scale(0.97);
+      transition: transform 0.8s cubic-bezier(0.34, 1.2, 0.64, 1), opacity 0.7s ease;
+      opacity: 0;
+    }
+
+    #invitation-unfold-wrapper.is-open .letter-slide-container {
+      transform: translateY(0px) scale(1);
+      opacity: 1;
+    }
+
+    /* Sparkle effect */
+    @keyframes sparkleFloat {
+      0% { transform: scale(0) rotate(0deg); opacity: 0; }
+      50% { transform: scale(1.2) rotate(180deg); opacity: 1; }
+      100% { transform: scale(0) rotate(360deg); opacity: 0; }
+    }
+    .sparkle-particle {
+      position: absolute;
+      pointer-events: none;
+      animation: sparkleFloat 1.2s ease-out forwards;
+    }
+  </style>
+<!-- END: Custom Styles -->
+</head>
+<body class="bg-[#EEF2F6] font-sans text-slate-800 antialiased selection:bg-[#5B758E] selection:text-white">
+<!-- BEGIN: Audio Background Floating Button -->
+<div class="fixed bottom-6 right-6 z-50" data-purpose="audio-toggle-container">
+<button aria-label="Bật/Tắt nhạc nền" class="group flex items-center gap-2 rounded-full bg-white/95 px-4 py-3 shadow-xl backdrop-blur-md border border-[#5B758E]/30 text-[#2F4858] hover:bg-[#5B758E] hover:text-white transition-all duration-300 transform hover:scale-105 active:scale-95" id="audio-toggle-btn">
+<span class="relative flex h-3 w-3">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#5B758E] opacity-75"></span>
+<span class="relative inline-flex rounded-full h-3 w-3 bg-[#5B758E] group-hover:bg-white"></span>
+</span>
+<svg class="w-5 h-5 transition-transform duration-300" fill="none" id="audio-icon-playing" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+<span class="text-xs font-semibold uppercase tracking-wider">Nhạc nền</span>
+</button>
+</div>
+<!-- END: Audio Background Floating Button -->
+<!-- BEGIN: Main Page Outer Container -->
+<div class="min-h-screen py-6 sm:py-12 md:py-16 px-3 sm:px-6 flex justify-center items-center">
+<div class="w-full max-w-4xl bg-white shadow-invitation rounded-3xl overflow-hidden border border-[#D6DFE8]/80 relative p-3 sm:p-5 md:p-8 bg-watercolor-cloud"><div class="relative w-full rounded-2xl border-2 border-dashed border-[#5B758E]/70 p-4 sm:p-7 md:p-10 bg-white/85 backdrop-blur-sm shadow-sm"><div class="absolute -top-7 -right-5 md:-top-10 md:-right-8 z-40 w-28 h-28 md:w-36 md:h-36 pointer-events-none select-none filter drop-shadow-md"><svg fill="none" viewBox="0 0 160 160" xmlns="http://www.w3.org/2000/svg"><path d="M80 75 C60 40 10 35 25 70 C38 95 72 82 80 75 Z" fill="#BBD2E8" fill-opacity="0.9" stroke="#8BAECB" stroke-width="1.5"></path><path d="M80 75 C100 40 150 35 135 70 C122 95 88 82 80 75 Z" fill="#BBD2E8" fill-opacity="0.9" stroke="#8BAECB" stroke-width="1.5"></path><path d="M80 75 C65 48 30 46 38 68 C45 84 70 78 80 75 Z" fill="#D9E7F4" fill-opacity="0.7"></path><path d="M80 75 C95 48 130 46 122 68 C115 84 90 78 80 75 Z" fill="#D9E7F4" fill-opacity="0.7"></path><circle cx="80" cy="75" fill="#9BBED8" r="9" stroke="#7B9FB9" stroke-width="1.5"></circle><circle cx="78" cy="73" fill="#CDE1F2" r="5"></circle><path d="M74 81 C60 105 45 130 35 145 C45 138 65 115 77 86 Z" fill="#AFCDE6" stroke="#8BAECB" stroke-width="1.2"></path><path d="M86 81 C100 105 115 130 125 145 C115 138 95 115 83 86 Z" fill="#AFCDE6" stroke="#8BAECB" stroke-width="1.2"></path></svg></div><header class="text-center mb-8 relative z-10"><div class="inline-block relative"><div class="flex items-center justify-center gap-2 mb-1"><svg class="w-8 h-8 text-[#2F4858] inline-block -rotate-12 drop-shadow-sm" fill="currentColor" viewBox="0 0 24 24"><path d="M12 3L1 9l11 6l9-4.91V17h2V9M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82z"></path></svg></div><h1 class="font-script-smooth text-5xl md:text-7xl font-normal tracking-wide text-[#2F4858] block leading-tight">Graduation</h1><span class="font-serif italic text-2xl md:text-3xl text-[#5B758E] block -mt-1 tracking-wider">Ceremony</span><div class="w-24 h-0.5 bg-[#5B758E]/40 mx-auto mt-2"></div></div><div class="mt-4 flex items-center justify-center gap-2 text-slate-600"><p class="font-handwritten text-2xl md:text-3xl text-[#2F4858]">Xin chào, mình là <span class="font-handwritten text-2xl md:text-3xl text-[#2F4858]">Cao Thị Nguyệt Đoan</span></p></div></header>
+<!-- BEGIN: Envelope Card (Initial View & Interactive Trigger with 3D Flip) -->
+<div class="relative max-w-lg mx-auto mb-8 envelope-3d-scene" id="envelope-wrapper">
+<!-- Interactive Prompt / Close Button Badge -->
+<div class="flex justify-center -mb-3.5 relative z-40">
+<button aria-label="Đóng/Mở thiệp mời" class="group inline-flex items-center gap-2 bg-[#2F4858] hover:bg-[#1B2B3A] text-white text-xs md:text-sm font-semibold px-5 py-2 rounded-full shadow-lg border border-white/50 transition-all duration-300 transform hover:scale-105 active:scale-95 animate-bounce cursor-pointer" id="envelope-badge-btn" type="button">
+<span class="text-amber-300" id="envelope-badge-icon">✨</span>
+<span id="envelope-badge-text">Nhấn vào thiệp để mở thiệp mời ✉️</span>
+</button>
+</div>
+<!-- Envelope Body Container with Refined 3D Flap (Non-covering text) -->
+<div aria-label="Mở thiệp mời tốt nghiệp" class="cursor-pointer group relative bg-[#5B758E] rounded-2xl shadow-xl overflow-hidden pt-12 pb-6 px-6 sm:pt-14 sm:pb-8 sm:px-8 text-white border-2 border-[#48637B] hover:border-[#7A9EB8] transition-all duration-500 transform hover:-translate-y-1 hover:shadow-2xl animate-envelope-glow select-none" id="interactive-envelope" role="button" tabindex="0">
+<!-- 3D Envelope Flap Visual (Gracefully sized & positioned above the headline) -->
+<div class="envelope-flap-3d absolute inset-x-0 top-0 h-11 sm:h-12 pointer-events-none drop-shadow-sm">
+<svg class="w-full h-full" preserveAspectRatio="none" viewBox="0 0 400 48">
+<path d="M0 0 L200 48 L400 0 Z" fill="#67839D" stroke="rgba(255,255,255,0.3)" stroke-width="1"></path>
+<path d="M0 0 L200 45 L400 0 Z" fill="#5B758E" opacity="0.65"></path>
+</svg>
+</div>
+<div class="relative z-10 flex flex-col items-center text-center">
+<div class="w-full border-b border-white/20 pb-3 mb-4">
+<span class="text-[11px] sm:text-xs tracking-widest uppercase text-blue-100 font-semibold flex items-center justify-center gap-1.5 drop-shadow-sm">
+<span>🎓</span> THIỆP MỜI THAM DỰ LỄ TỐT NGHIỆP <span>🎓</span>
+</span>
+<h3 class="font-display text-2xl sm:text-3xl font-bold mt-1.5 text-white tracking-wide drop-shadow-sm">LỄ TỐT NGHIỆP CỬ NHÂN</h3>
+</div>
+<div class="my-2 w-full flex items-center justify-center relative">
+<div class="h-1 w-full bg-[#A2BCD3]/50 absolute top-1/2 -translate-y-1/2 z-0"></div>
+<div class="envelope-ribbon-bow relative z-20 bg-[#5B758E] px-4 group-hover:scale-110 transition-transform duration-300">
+<svg class="w-24 h-16 filter drop-shadow" fill="none" viewBox="0 0 100 70" xmlns="http://www.w3.org/2000/svg">
+<path d="M50 35 C40 18 15 15 22 35 C28 47 45 40 50 35 Z" fill="#A4C6E2" stroke="#7EA5C6" stroke-width="1.5"></path>
+<path d="M50 35 C60 18 85 15 78 35 C72 47 55 40 50 35 Z" fill="#A4C6E2" stroke="#7EA5C6" stroke-width="1.5"></path>
+<circle cx="50" cy="35" fill="#8BB3D3" r="5.5"></circle>
+<path d="M47 38 C38 52 28 65 22 68 C28 64 42 52 49 41 Z" fill="#A4C6E2"></path>
+<path d="M53 38 C62 52 72 65 78 68 C72 64 58 52 51 41 Z" fill="#A4C6E2"></path>
+</svg>
+</div>
+</div>
+<p class="font-handwritten text-xl sm:text-2xl text-blue-100 mt-2 font-normal">Trân trọng kính mời quý thầy cô, gia đình &amp; bạn bè</p>
+<div class="mt-4 pt-3 border-t border-white/20 w-full flex items-center justify-center gap-2 text-xs uppercase tracking-widest text-blue-100/90 font-medium group-hover:text-white transition-colors">
+<span class="inline-flex items-center gap-1.5 font-bold" id="envelope-action-text">
+<span>💌</span> Nhấn để mở toàn bộ thiệp mời 
+          <svg class="w-4 h-4 transform group-hover:translate-y-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"></path></svg>
+</span>
+</div>
+</div>
+</div>
+</div>
+<!-- END: Envelope Card -->
+<!-- BEGIN: Unfolding Letter Card Wrapper (Interactive Letter Slide-Out) -->
+<div class="w-full" id="invitation-unfold-wrapper">
+<div class="letter-slide-container">
+<!-- Sticky Top Bar When Open: Quick Close & Indicator -->
+<div class="flex items-center justify-between bg-blue-50/90 border border-[#D6DFE8] rounded-xl px-4 py-2.5 mb-8 shadow-sm backdrop-blur-sm">
+<div class="flex items-center gap-2 text-xs font-semibold text-[#2F4858]">
+<span class="inline-flex h-2.5 w-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
+<span>Thiệp mời đã mở trọn vẹn</span>
+</div>
+<button aria-label="Gập thiệp lại" class="close-envelope-btn inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-bold uppercase tracking-wider text-[#5B758E] hover:text-[#2F4858] hover:bg-white rounded-lg border border-[#D6DFE8] transition-all duration-200 active:scale-95" type="button">
+<span>✕</span> Gập thiệp lại
+    </button>
+</div>
+<!-- Revealed Invitation Details Content -->
+<div class="space-y-10" id="invitation-details-container">
+<!-- Portrait Section -->
+<div class="relative max-w-lg mx-auto mb-10 group"><div class="relative bg-white p-3 md:p-4 rounded-2xl shadow-paper border border-[#D6DFE8] transition-transform duration-500 hover:rotate-0 -rotate-1"><div class="absolute -top-3 -left-3 z-20 bg-[#EDE7DF] border border-[#D8CEBF] text-[#7A6B58] text-xs font-semibold uppercase px-4 py-1 rotate-[-12deg] shadow-sm tracking-widest rounded-sm">Class of 2026</div><div class="relative rounded-xl overflow-hidden bg-slate-100 aspect-[3/4] max-h-[540px] flex items-center justify-center"><img alt="Chân dung tốt nghiệp cử nhân Cao Thị Nguyệt Đoan" class="w-full h-full object-cover object-center block mx-auto hover:scale-105 transition-transform duration-700" loading="eager" src="https://lh3.googleusercontent.com/aida/ALJJyrDad2Q-MpABbC6AuJWEHeBJsBG2XMKTkjOpIeXa5uzlQOCfVZ7pcuQC18DL0c3_BGcARtlp4r-AlimzL4ltsR45mbCjCfYimNFoFxhIz6Gv4Nbl6Y7TnKjvvkBlFrVPKE3N7DvzFK8jA8pNyRVaYLE5UTPshjyP8FjNk2UhCkdwu1WE-1B9bd4vjeW7iedZNKJ6OQmPM8v6x1XxwL79zgwkl18ADXhhb-xVGZv6zdM"><div class="absolute inset-0 bg-gradient-to-t from-[#1B2B3A]/30 via-transparent to-transparent pointer-events-none"></div></div></div></div>
+<!-- Photo Gallery Section -->
+<section class="my-10 relative bg-white/80 rounded-2xl p-4 sm:p-6 border-2 border-dashed border-[#5B758E]/40 shadow-sm" data-purpose="photo-gallery-carousel"><div class="flex items-center justify-between mb-4 px-2"><div class="flex items-center gap-2"><span class="text-lg">📸</span><h3 class="font-display text-xl sm:text-2xl font-bold text-[#2F4858]">Khoảnh Khắc Kỷ Niệm</h3></div><div class="flex items-center gap-2"><button aria-label="Xem ảnh trước" class="w-8 h-8 rounded-full border border-[#D6DFE8] bg-white text-[#5B758E] hover:bg-[#5B758E] hover:text-white flex items-center justify-center transition shadow-sm active:scale-95" onclick="const el = document.getElementById('gallery-slider'); el.scrollBy({ left: -260, behavior: 'smooth' });"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M15 19l-7-7 7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg></button><button aria-label="Xem ảnh tiếp theo" class="w-8 h-8 rounded-full border border-[#D6DFE8] bg-white text-[#5B758E] hover:bg-[#5B758E] hover:text-white flex items-center justify-center transition shadow-sm active:scale-95" onclick="const el = document.getElementById('gallery-slider'); el.scrollBy({ left: 260, behavior: 'smooth' });"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg></button></div></div><div class="relative"><div class="flex gap-5 overflow-x-auto pb-4 pt-2 px-2 scroll-smooth [scrollbar-width:none] [-ms-overflow-style:none] [&amp;::-webkit-scrollbar]:hidden snap-x snap-mandatory" id="gallery-slider"><div class="shrink-0 w-60 sm:w-64 snap-center transform hover:rotate-0 -rotate-1 transition-all duration-300 hover:scale-105"><div class="bg-white p-3 pb-4 rounded-xl shadow-paper border border-[#D6DFE8]"><div class="relative aspect-[3/4] bg-slate-100 rounded-lg overflow-hidden mb-3 border border-[#D6DFE8]/50 flex items-center justify-center"><img alt="Khoảnh khắc kỷ niệm cử nhân" class="w-full h-full object-cover object-center" loading="lazy" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA5uwGgsMvdxe14LjWnpRt-XJz7RSs8NfUbcDpf9ZrxTVoHCwCtPW_hB7PApsN8_94RPfN5eotFS4GL-Qi5aYCeGUFgzF4Bvwf0GC4ZkYf1BRPLgDpQpdDyyjADRY3X3bDnZn9gSEx8GYYeF8qUS1RYxl6Z2heqDs_1DLzq7a2RC5bWhnyNc_nVDn-CJed94SBKrJ6rqY2rVQF9KzuBtOD8QLi5sn2DyLRtLZ68c5o"><div class="absolute top-2 right-2 bg-white/90 backdrop-blur-sm text-[10px] font-semibold text-[#5B758E] px-2 py-0.5 rounded-full shadow-sm">#Memories</div></div><p class="font-handwritten text-lg font-bold text-center text-[#2F4858]">Lễ tốt nghiệp 2026</p><p class="text-[11px] text-center text-slate-500 font-medium uppercase tracking-wider mt-0.5">Dấu mốc thanh xuân</p></div></div><div class="shrink-0 w-60 sm:w-64 snap-center transform hover:rotate-0 rotate-1 transition-all duration-300 hover:scale-105"><div class="bg-white p-3 pb-4 rounded-xl shadow-paper border border-[#D6DFE8]"><div class="relative aspect-[3/4] bg-slate-100 rounded-lg overflow-hidden mb-3 border border-[#D6DFE8]/50 flex items-center justify-center"><img alt="Bạn bè và thầy cô" class="w-full h-full object-cover object-center" loading="lazy" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCF4BXAZ-X16CyU8Vj3u4PCqGvjy1sLBe_tbNS4m_a__BRPgiHrCgI5QIrvTMxBtk71MSXy9aBbpquTryQTglNIs_gzqWp1TG8zFpMRWBrU805TCZ3YA0pVtwu6tPklATy2uB-TESh_yp1WdcLo-noXIdhEQ_VhJuG1hL_VTRjNJfE9x34ceyfGJNgTUUdEx2AIxz-Id-HGVKsyetlGqTHv6ZKu6a25CExiDamqzrk"><div class="absolute top-2 right-2 bg-white/90 backdrop-blur-sm text-[10px] font-semibold text-[#5B758E] px-2 py-0.5 rounded-full shadow-sm">#Friends</div></div><p class="font-handwritten text-lg font-bold text-center text-[#2F4858]">Bạn bè &amp; Thầy cô</p><p class="text-[11px] text-center text-slate-500 font-medium uppercase tracking-wider mt-0.5">Những người đồng hành</p></div></div><div class="shrink-0 w-60 sm:w-64 snap-center transform hover:rotate-0 -rotate-2 transition-all duration-300 hover:scale-105"><div class="bg-white p-3 pb-4 rounded-xl shadow-paper border border-[#D6DFE8]"><div class="relative aspect-[3/4] bg-slate-100 rounded-lg overflow-hidden mb-3 border border-[#D6DFE8]/50 flex items-center justify-center"><img alt="Thanh xuân rực rỡ dưới mái trường" class="w-full h-full object-cover object-center" loading="lazy" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBbSX47PLyatko0cTiFZ3t473flkF_VtnTFRzFHtshWJBHTCsX26jFoOwOafOLp7U5FzN0eRN5xzIzghCh40FjhZ1JID4RGRT4FIUDinS8aGkq2Z-SYKlPsRhSWr1556a3EDSmR1-LUJ1HPUgE-nY0CMZN5nwxSTyE6HNVhGYDaOZGlyeqA4o40YR7p9M4tElHguOrzEEZ4vXKPn1FytKDnR4ZEx8YUC-bZkaIStMo"><div class="absolute top-2 right-2 bg-white/90 backdrop-blur-sm text-[10px] font-semibold text-[#5B758E] px-2 py-0.5 rounded-full shadow-sm">#Youth</div></div><p class="font-handwritten text-lg font-bold text-center text-[#2F4858]">Thanh xuân rực rỡ</p><p class="text-[11px] text-center text-slate-500 font-medium uppercase tracking-wider mt-0.5">Năm tháng sinh viên</p></div></div><div class="shrink-0 w-60 sm:w-64 snap-center transform hover:rotate-0 rotate-2 transition-all duration-300 hover:scale-105"><div class="bg-white p-3 pb-4 rounded-xl shadow-paper border border-[#D6DFE8]"><div class="relative aspect-[3/4] bg-slate-100 rounded-lg overflow-hidden mb-3 border border-[#D6DFE8]/50 flex items-center justify-center"><img alt="Hành trình mới phía trước" class="w-full h-full object-cover object-center" loading="lazy" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAiDIFk8rO_MKY9Czv--AwOfeqEBpW1nelZHVbzBPYMJegIbqHVMN1rRYyNjv740hbDWISe1zpFUkY4q20Kn9ODpPHEY4eCtmHWwSBgRcrgYRvS9hAUWuiI8ngkSUnfVHAaO8vGKpAzEMDhy5ORGad6xwL3qHRxH_yB5qiI3BjEWGzFYQZshlLSuEeW1kmSM2GcyRqSy9PUwWYPLJF1Ssf0hLQJ-rHVVhUVLVDr37U"><div class="absolute top-2 right-2 bg-white/90 backdrop-blur-sm text-[10px] font-semibold text-[#5B758E] px-2 py-0.5 rounded-full shadow-sm">#Future</div></div><p class="font-handwritten text-lg font-bold text-center text-[#2F4858]">Bước sang trang mới</p><p class="text-[11px] text-center text-slate-500 font-medium uppercase tracking-wider mt-0.5">Sẵn sàng tỏa sáng</p></div></div></div></div><div class="text-center mt-2 flex items-center justify-center gap-1.5 text-xs text-slate-500 font-medium"><span class="text-sm">👉</span><span>Vuốt để xem thêm ảnh 📸</span></div></section>
+<!-- Event Schedule and Venue -->
+<article class="mt-8 bg-white/95 rounded-2xl p-6 md:p-8 border-2 border-dashed border-[#5B758E]/50 shadow-sm relative" data-purpose="event-schedule-and-venue"><div class="grid grid-cols-1 md:grid-cols-2 gap-8 divide-y md:divide-y-0 md:divide-x divide-[#D6DFE8]"><div class="flex flex-col items-center text-center pb-6 md:pb-0 px-2"><div class="w-12 h-12 rounded-full bg-[#5B758E]/10 flex items-center justify-center text-[#5B758E] mb-3"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"></path></svg></div><span class="text-xs uppercase tracking-widest font-semibold text-[#5B758E]">Thời Gian</span><h2 class="font-display text-2xl md:text-3xl font-bold text-[#2F4858] mt-1">THỨ HAI</h2><p class="text-xl font-semibold text-slate-700 mt-1">16 / 11 / 2026</p><span class="inline-block mt-2 px-3 py-1 bg-[#EEF2F6] text-[#2F4858] font-medium text-sm rounded-full">10:00 — 12:00</span></div><div class="flex flex-col items-center text-center pt-6 md:pt-0 md:pl-8 px-2"><div class="w-12 h-12 rounded-full bg-[#5B758E]/10 flex items-center justify-center text-[#5B758E] mb-3"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"></path><path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"></path></svg></div><span class="text-xs uppercase tracking-widest font-semibold text-[#5B758E]">Địa Điểm</span><h2 class="font-display text-2xl md:text-3xl font-bold text-[#2F4858] mt-1">NHÀ HÁT HOÀ BÌNH</h2><p class="text-slate-600 mt-1 text-sm md:text-base leading-relaxed">240 Đường 3 Tháng 2, Phường 12, Quận 10, TP. Hồ Chí Minh</p><a class="mt-3 inline-flex items-center gap-1.5 text-xs font-semibold text-[#5B758E] hover:text-[#2F4858] underline underline-offset-4 transition-colors" href="https://maps.google.com/?q=Nhà+Hát+Hoà+Bình+240+Ba+Tháng+Hai+Hồ+Chí+Minh" rel="noopener noreferrer" target="_blank"><span>Xem bản đồ chỉ đường</span><svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg></a></div></div><div class="mt-8 pt-6 border-t border-[#D6DFE8] flex flex-wrap items-center justify-center gap-4 text-xs md:text-sm text-slate-600"><a class="flex items-center gap-2 px-4 py-2 bg-[#F8FAFC] border border-[#D6DFE8] rounded-full hover:border-[#5B758E] hover:text-[#5B758E] transition-all" href="tel:0335906971"><span class="text-[#5B758E]">📞</span><span><strong>Nguyệt Đoan:</strong> 0335 906 971</span></a><a class="flex items-center gap-2 px-4 py-2 bg-[#F8FAFC] border border-[#D6DFE8] rounded-full hover:border-[#5B758E] hover:text-[#5B758E] transition-all" href="tel:0918139218"><span class="text-[#5B758E]">✉️</span><span><strong>Mẹ Nguyệt:</strong> 0918 139 218</span></a></div><div class="text-center mt-6"><p class="font-serif italic text-lg md:text-xl text-[#2F4858]">"Sự hiện diện của bạn là niềm vinh hạnh của chúng tôi!"</p></div></article>
+
+<!-- ========== RSVP GOOGLE FORM (ĐÃ THAY THẾ) ========== -->
+<div class="mt-12 bg-white/95 rounded-2xl p-5 sm:p-6 md:p-8 border-2 border-dashed border-[#5B758E]/40 shadow-sm relative overflow-hidden">
+  <div class="text-center mb-6 md:mb-8">
+    <span class="font-script-smooth text-4xl text-[#5B758E]">RSVP</span>
+    <h3 class="font-display text-2xl md:text-3xl font-bold tracking-wide text-[#2F4858] mt-1">Xác Nhận Tham Dự</h3>
+    <p class="font-serif italic text-sm md:text-base text-slate-600 leading-relaxed max-w-md mx-auto mt-2">
+      "Rất mong có bạn đến chung vui cùng mình! Xin vui lòng xác nhận sự có mặt của bạn để mình chuẩn bị đón tiếp chu đáo nhất."
+    </p>
+  </div>
+
+  <!-- Google Form Embed -->
+  <div class="w-full max-w-2xl mx-auto rounded-xl overflow-hidden border border-[#D6DFE8] bg-white shadow-sm">
+    <iframe 
+      src="https://docs.google.com/forms/d/e/1FAIpQLSc3Q4UipxsmPRyrYwKQAtGbEKmOQBrpjs1i3uELzodNQ0gZqQ/viewform?embedded=true" 
+      class="w-full border-0"
+      style="min-height: 820px; height: 100%;"
+      frameborder="0" 
+      marginheight="0" 
+      marginwidth="0"
+      loading="lazy"
+      title="Form xác nhận tham dự lễ tốt nghiệp">
+      Đang tải…
+    </iframe>
+  </div>
+
+  <p class="text-center text-xs text-slate-500 mt-4 font-medium">
+    Nếu form không hiện, bạn có thể 
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLSc3Q4UipxsmPRyrYwKQAtGbEKmOQBrpjs1i3uELzodNQ0gZqQ/viewform" 
+       target="_blank" rel="noopener" 
+       class="underline text-[#5B758E] hover:text-[#2F4858]">
+      mở form tại đây
+    </a>
+  </p>
+</div>
+<!-- ========== HẾT RSVP ========== -->
+
+<!-- Secondary Fold / Close Button at bottom of letter -->
+<div class="mt-8 flex justify-center">
+<button aria-label="Gập phong bì thiệp mời lại" class="close-envelope-btn group inline-flex items-center gap-2 bg-white hover:bg-slate-100 text-[#5B758E] hover:text-[#2F4858] text-xs md:text-sm font-semibold px-6 py-2.5 rounded-full shadow-md border border-[#D6DFE8] transition-all duration-300 active:scale-95" type="button">
+<svg class="w-4 h-4 transform group-hover:-translate-y-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M5 15l7-7 7 7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+<span>Gập thiệp lại &amp; Đóng phong bì ✉️</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- END: Unfolding Letter Card Wrapper -->
+<!-- Footer Section (Always Visible) -->
+<footer class="mt-12 text-center py-6 border-t border-[#D6DFE8]"><p class="font-script-smooth text-4xl text-[#5B758E] mb-2">Thank You!</p><p class="text-xs uppercase tracking-widest text-slate-500 font-medium">Kỷ niệm Lễ Tốt Nghiệp • Cao Thị Nguyệt Đoan • 2026</p></footer></div></div>
+</div>
+<!-- END: Main Page Outer Container -->
+<!-- BEGIN: Form & Audio Interactivity Scripts -->
+<script data-purpose="envelope-toggle-handler">
+  document.addEventListener('DOMContentLoaded', () => {
+    const envelope = document.getElementById('interactive-envelope');
+    const badgeBtn = document.getElementById('envelope-badge-btn');
+    const badgeIcon = document.getElementById('envelope-badge-icon');
+    const badgeText = document.getElementById('envelope-badge-text');
+    const actionText = document.getElementById('envelope-action-text');
+    const unfoldWrapper = document.getElementById('invitation-unfold-wrapper');
+    const closeBtns = document.querySelectorAll('.close-envelope-btn');
+
+    let isOpen = false;
+
+    // Trigger subtle confetti burst
+    const triggerConfetti = () => {
+      if (typeof confetti === 'function') {
+        confetti({
+          particleCount: 50,
+          spread: 60,
+          origin: { y: 0.4 },
+          colors: ['#5B758E', '#A4C6E2', '#E6AF2E', '#F8FAFC']
+        });
+      }
+    };
+
+    const openEnvelope = () => {
+      if (isOpen) return;
+      isOpen = true;
+
+      // 1. 3D Flap opening
+      envelope.classList.add('envelope-opened');
+      envelope.classList.remove('animate-envelope-glow');
+
+      // 2. Change badge & action labels
+      if (badgeBtn) {
+        badgeBtn.classList.remove('animate-bounce');
+        badgeBtn.classList.replace('bg-[#2F4858]', 'bg-slate-700');
+      }
+      if (badgeIcon) badgeIcon.textContent = '✕';
+      if (badgeText) badgeText.textContent = 'Gập thiệp lại ✉️';
+      if (actionText) actionText.innerHTML = '<span>✕</span> Gập thiệp lại & Đóng phong bì <svg class="w-4 h-4 transform rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"></path></svg>';
+
+      // 3. Smooth accordion expand letter
+      if (unfoldWrapper) {
+        unfoldWrapper.classList.add('is-open');
+      }
+
+      // 4. Confetti burst & scroll
+      setTimeout(() => {
+        triggerConfetti();
+        if (unfoldWrapper) {
+          unfoldWrapper.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }, 400);
+    };
+
+    const closeEnvelope = () => {
+      if (!isOpen) return;
+      isOpen = false;
+
+      // 1. Collapse letter smoothly
+      if (unfoldWrapper) {
+        unfoldWrapper.classList.remove('is-open');
+      }
+
+      // 2. Scroll gently back to envelope
+      envelope.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+      // 3. Flap closes back down
+      setTimeout(() => {
+        envelope.classList.remove('envelope-opened');
+        envelope.classList.add('animate-envelope-glow');
+
+        if (badgeBtn) {
+          badgeBtn.classList.add('animate-bounce');
+          badgeBtn.classList.replace('bg-slate-700', 'bg-[#2F4858]');
+        }
+        if (badgeIcon) badgeIcon.textContent = '✨';
+        if (badgeText) badgeText.textContent = 'Nhấn vào thiệp để mở thiệp mời ✉️';
+        if (actionText) actionText.innerHTML = '<span>💌</span> Nhấn để mở toàn bộ thiệp mời <svg class="w-4 h-4 transform group-hover:translate-y-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"></path></svg>';
+      }, 450);
+    };
+
+    const toggleEnvelope = () => {
+      if (isOpen) {
+        closeEnvelope();
+      } else {
+        openEnvelope();
+      }
+    };
+
+    // Event listeners
+    if (envelope) {
+      envelope.addEventListener('click', toggleEnvelope);
+      envelope.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          toggleEnvelope();
+        }
+      });
+    }
+
+    if (badgeBtn) {
+      badgeBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        toggleEnvelope();
+      });
+    }
+
+    closeBtns.forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        closeEnvelope();
+      });
+    });
+  });
+</script>
+<script data-purpose="audio-toggle-handler">
+  document.addEventListener('DOMContentLoaded', () => {
+    const audioBtn = document.getElementById('audio-toggle-btn');
+    let isPlaying = false;
+
+    const audio = new Audio('https://assets.mixkit.co/music/815/815.mp3');
+    audio.loop = true;
+    audio.volume = 0.4;
+
+    // Hàm bật nhạc
+    const playMusic = async () => {
+      if (isPlaying) return;
+      try {
+        await audio.play();
+        isPlaying = true;
+        if (audioBtn) {
+          audioBtn.classList.add('bg-[#5B758E]', 'text-white');
+          audioBtn.classList.remove('bg-white/95', 'text-[#2F4858]');
+        }
+      } catch (err) {
+        console.log('Autoplay bị chặn:', err);
+      }
+    };
+
+    // Hàm tắt nhạc
+    const pauseMusic = () => {
+      audio.pause();
+      isPlaying = false;
+      if (audioBtn) {
+        audioBtn.classList.remove('bg-[#5B758E]', 'text-white');
+        audioBtn.classList.add('bg-white/95', 'text-[#2F4858]');
+      }
+    };
+
+    // 1. Thử tự phát khi vừa mở trang
+    playMusic();
+
+    // 2. Nếu bị chặn → tự phát khi người dùng mở thiệp
+    const envelope = document.getElementById('interactive-envelope');
+    if (envelope) {
+      envelope.addEventListener('click', () => {
+        if (!isPlaying) playMusic();
+      }, { once: true }); // chỉ lắng nghe 1 lần
+    }
+
+    // Nút bật/tắt thủ công vẫn giữ nguyên
+    if (audioBtn) {
+      audioBtn.addEventListener('click', () => {
+        if (isPlaying) {
+          pauseMusic();
+        } else {
+          playMusic();
+        }
+      });
+    }
+  });
+</script>
+<!-- END: Form & Audio Interactivity Scripts -->
+</body>
+</html>
